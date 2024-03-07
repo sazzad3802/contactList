@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.gozayaan.contactlist.viewmodels.ContactDetailViewModel" />
+        <variable
+            name="contact"
+            type="com.gozayaan.contactlist.models.ContactData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".views.activities.MainActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="15dip">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:gravity="center_horizontal"
+            app:srcCompat="@drawable/ic_back"
+            android:layout_marginStart="20dip"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_contact_detail_image"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_face"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_back"
+            android:layout_marginTop="40dip"/>
+
+        <TextView
+            android:id="@+id/tv_contact_detail_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@{contact.fullName}"
+            android:layout_marginTop="10dp"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            app:layout_constraintTop_toBottomOf="@+id/civ_contact_detail_image"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_contact_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@{contact.email}"
+            android:layout_marginTop="8dp"
+            android:textSize="15sp"
+            android:textStyle="normal"
+            app:layout_constraintTop_toBottomOf="@+id/tv_contact_detail_name"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_contact_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@{contact.phoneNumber}"
+            android:layout_marginTop="6dp"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            app:layout_constraintTop_toBottomOf="@+id/tv_contact_email"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/bottom_linear_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="15dip"
+            android:paddingEnd="15dip"
+            android:layout_marginTop="30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_contact_phone"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/call_linear_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginStart="10dip"
+                android:layout_marginEnd="10dip"
+                android:paddingTop="10dip"
+                android:paddingBottom="10dip"
+                android:background="@drawable/bg_linear_view">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="32dip"
+                    android:layout_height="32dip"
+                    app:srcCompat="@drawable/ic_call"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Call"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/message_linear_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginStart="10dip"
+                android:layout_marginEnd="10dip"
+                android:paddingTop="10dip"
+                android:paddingBottom="10dip"
+                android:background="@drawable/bg_linear_view">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="32dip"
+                    android:layout_height="32dip"
+                    app:srcCompat="@drawable/ic_messages" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Message"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/mail_linear_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginStart="10dip"
+                android:layout_marginEnd="10dip"
+                android:paddingTop="10dip"
+                android:paddingBottom="10dip"
+                android:background="@drawable/bg_linear_view">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="32dip"
+                    android:layout_height="32dip"
+                    app:srcCompat="@drawable/ic_mail"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
