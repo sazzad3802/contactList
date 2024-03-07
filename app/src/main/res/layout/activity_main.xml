@@ -2,6 +2,11 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.gozayaan.contactlist.viewmodels.MainViewModel" />
+    </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         xmlns:tools="http://schemas.android.com/tools"
@@ -21,6 +26,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/top_linear_view"
                 android:gravity="center_horizontal"
                 android:text="My Contacts"
                 android:textStyle="bold"
@@ -28,8 +34,66 @@
                 android:layout_marginTop="10dip"
                 android:layout_marginBottom="20dip"/>
 
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/top_linear_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dip"
+                android:layout_marginStart="20dip"
+                android:paddingStart="15dip"
+                android:paddingEnd="15dip"
+                android:background="@drawable/bg_search"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+                android:paddingTop="10dip"
+                android:paddingBottom="10dip"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dip"
+                    app:srcCompat="@drawable/ic_search" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/et_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="Search"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/top_linear_view"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:paddingStart="5dip"
+                android:paddingEnd="16dip"
+                tools:listitem="@layout/contact_item"
+                android:visibility="gone"
+                android:layout_marginTop="20dip"
+                android:paddingBottom="50dip"/>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:textSize="16sp"/>
 
         <ProgressBar
             android:id="@+id/progressBar"

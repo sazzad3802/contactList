@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="contact"
+            type="com.gozayaan.contactlist.models.ContactData" />
+        <variable
+            name="viewModel"
+            type="com.gozayaan.contactlist.viewmodels.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        xmlns:tools="http://schemas.android.com/tools">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civContactImage"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:src="@drawable/ic_account"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvContactName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@{contact.fullName}"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintLeft_toRightOf="@+id/civContactImage"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvContactPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@{contact.phoneNumber}"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintLeft_toRightOf="@+id/civContactImage"
+            app:layout_constraintTop_toBottomOf="@+id/tvContactName" />
+
+        <View
+            android:id="@+id/border"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="#efefef"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toRightOf="@+id/civContactImage"
+            app:layout_constraintTop_toBottomOf="@+id/tvContactPhone"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
